@@ -9,7 +9,7 @@ import { OrdersComponent } from './ecommerce/orders/orders.component';
 import { ShoppingCartComponent } from './ecommerce/shopping-cart/shopping-cart.component';
 import { ModelsComponent } from './ecommerce/models/models.component';
 import { ServicesComponent } from './ecommerce/services/services.component';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,8 @@ import { ServicesComponent } from './ecommerce/services/services.component';
     ServicesComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+	FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

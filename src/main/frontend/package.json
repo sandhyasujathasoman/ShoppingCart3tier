@@ -7,7 +7,7 @@
     "start": "ng serve --proxy-config proxy-conf.json",
     "postbuild": "npm run deploy",
     "predeploy": "rimraf ../resources/static/ && mkdirp ../resources/static",
-    "deploy": "copyfiles -f dist/frontend/** ../resources/static",
+    "deploy": "copyfiles -f dist/** ../resources/static",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
@@ -27,6 +27,7 @@
     "bootstrap": "^4.3.1",
     "core-js": "^2.4.1",
     "rxjs": "^5.5.6",
+    "rxjs-compat": "^6.5.2",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {

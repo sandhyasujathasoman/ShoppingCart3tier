@@ -1,6 +1,6 @@
-import {ProductOrder} from "../models/product-order.model";
-import {Subject} from "rxjs/internal/Subject";
-import {ProductOrders} from "../models/product-orders.model";
+import {ProductOrder} from "../models/product-order";
+import {Subject} from "rxjs/Subject";
+import {ProductOrders} from "../models/product-orders";
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from "@angular/core";
 

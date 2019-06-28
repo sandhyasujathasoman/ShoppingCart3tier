@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductOrder} from "../models/product-order.model";
-import {EcommerceService} from "../services/EcommerceService";
-import {Subscription} from "rxjs/internal/Subscription";
-import {ProductOrders} from "../models/product-orders.model";
-import {Product} from "../models/product.model";
+import {ProductOrder} from "../models/product-order";
+import {EcommerceService} from "../services/ecommerce-service";
+import {Subscription} from "rxjs/Subscription";
+import {ProductOrders} from "../models/product-orders";
+import {Product} from "../models/product";
 
 @Component({
     selector: 'app-products',
