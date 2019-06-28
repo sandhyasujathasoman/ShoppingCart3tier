@@ -1,64 +1,92 @@
 package com.shoppingcart.demo.model;
 
-import com.shoppingcart.demo.form.CustomerForm;
+import java.io.Serializable;
 
-public class CustomerInfo {
-	private String name;
-    private String address;
-    private String email;
-    private String phone;
- 
-    private boolean valid;
- 
-    public CustomerInfo() {
- 
+import javax.persistence.Embeddable;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+@Embeddable
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "order")
+public class OrderProductPK implements Serializable {
+
+    private static final long serialVersionUID = 476151177562655457L;
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private Order order;
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+    public Order getOrder() {
+        return order;
     }
- 
-    public CustomerInfo(CustomerForm customerForm) {
-        this.name = customerForm.getName();
-        this.address = customerForm.getAddress();
-        this.email = customerForm.getEmail();
-        this.phone = customerForm.getPhone();
-        this.valid = customerForm.isValid();
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
- 
-    public String getName() {
-        return name;
+
+    public Product getProduct() {
+        return product;
     }
- 
-    public void setName(String name) {
-        this.name = name;
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
- 
-    public String getEmail() {
-        return email;
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+
+        result = prime * result + ((order.getId() == null)
+          ? 0
+          : order
+            .getId()
+            .hashCode());
+        result = prime * result + ((product.getId() == null)
+          ? 0
+          : product
+            .getId()
+            .hashCode());
+
+        return result;
     }
- 
-    public void setEmail(String email) {
-        this.email = email;
-    }
- 
-    public String getAddress() {
-        return address;
-    }
- 
-    public void setAddress(String address) {
-        this.address = address;
-    }
- 
-    public String getPhone() {
-        return phone;
-    }
- 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
- 
-    public boolean isValid() {
-        return valid;
-    }
- 
-    public void setValid(boolean valid) {
-        this.valid = valid;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        OrderProductPK other = (OrderProductPK) obj;
+        if (order == null) {
+            if (other.order != null) {
+                return false;
+            }
+        } else if (!order.equals(other.order)) {
+            return false;
+        }
+
+        if (product == null) {
+            if (other.product != null) {
+                return false;
+            }
+        } else if (!product.equals(other.product)) {
+            return false;
+        }
+
+        return true;
     }
 }

@@ -1,75 +1,88 @@
 package com.shoppingcart.demo.model;
 
-public class OrderDetailInfo {
-	private String id;
-	 
-    private String productCode;
-    private String productName;
- 
-    private int quanity;
-    private double price;
-    private double amount;
- 
-    public OrderDetailInfo() {
- 
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+
+import org.springframework.data.annotation.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+public class OrderProduct {
+
+    @EmbeddedId
+    @JsonIgnore
+    private OrderProductPK pk;
+
+    @Column(nullable = false) private Integer quantity;
+
+    public OrderProduct() {
+        super();
     }
- 
-    // Using for JPA/Hibernate Query.
-    public OrderDetailInfo(String id, String productCode, //
-            String productName, int quanity, double price, double amount) {
-        this.id = id;
-        this.productCode = productCode;
-        this.productName = productName;
-        this.quanity = quanity;
-        this.price = price;
-        this.amount = amount;
+
+    public OrderProduct(Order order, Product product, Integer quantity) {
+        pk = new OrderProductPK();
+        pk.setOrder(order);
+        pk.setProduct(product);
+        this.quantity = quantity;
     }
- 
-    public String getId() {
-        return id;
+
+    @Transient
+    public Product getProduct() {
+        return this.pk.getProduct();
     }
- 
-    public void setId(String id) {
-        this.id = id;
+
+    @Transient
+    public Double getTotalPrice() {
+        return getProduct().getPrice() * getQuantity();
     }
- 
-    public String getProductCode() {
-        return productCode;
+
+    public OrderProductPK getPk() {
+        return pk;
     }
- 
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
+
+    public void setPk(OrderProductPK pk) {
+        this.pk = pk;
     }
- 
-    public String getProductName() {
-        return productName;
+
+    public Integer getQuantity() {
+        return quantity;
     }
- 
-    public void setProductName(String productName) {
-        this.productName = productName;
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
- 
-    public int getQuanity() {
-        return quanity;
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((pk == null) ? 0 : pk.hashCode());
+
+        return result;
     }
- 
-    public void setQuanity(int quanity) {
-        this.quanity = quanity;
-    }
- 
-    public double getPrice() {
-        return price;
-    }
- 
-    public void setPrice(double price) {
-        this.price = price;
-    }
- 
-    public double getAmount() {
-        return amount;
-    }
- 
-    public void setAmount(double amount) {
-        this.amount = amount;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        OrderProduct other = (OrderProduct) obj;
+        if (pk == null) {
+            if (other.pk != null) {
+                return false;
+            }
+        } else if (!pk.equals(other.pk)) {
+            return false;
+        }
+
+        return true;
     }
 }

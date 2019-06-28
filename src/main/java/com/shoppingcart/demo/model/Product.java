@@ -1,49 +1,66 @@
 package com.shoppingcart.demo.model;
 
-import com.shoppingcart.demo.entity.Product;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
-public class ProductInfo {
-	private String code;
-	private String name;
-	private double price;
+@Entity
+public class Product {
 
-	public ProductInfo() {
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	public ProductInfo(Product product) {
-		this.code = product.getCode();
-		this.name = product.getName();
-		this.price = product.getPrice();
-	}
+    @NotNull(message = "Product name is required.")
+    @Basic(optional = false)
+    private String name;
 
-	// Using in JPA/Hibernate query
-	public ProductInfo(String code, String name, double price) {
-		this.code = code;
-		this.name = name;
-		this.price = price;
-	}
+    private Double price;
 
-	public String getCode() {
-		return code;
-	}
+    private String pictureUrl;
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+    public Product(Long id, @NotNull(message = "Product name is required.") String name, Double price, String pictureUrl) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.pictureUrl = pictureUrl;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public Product() {
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public double getPrice() {
-		return price;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setPrice(double price) {
-		this.price = price;
-	}
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
+    }
 }
