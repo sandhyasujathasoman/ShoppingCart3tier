@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { EcommerceComponent } from './ecommerce/ecommerce.component';
@@ -10,6 +10,7 @@ import { ShoppingCartComponent } from './ecommerce/shopping-cart/shopping-cart.c
 import { ModelsComponent } from './ecommerce/models/models.component';
 import { ServicesComponent } from './ecommerce/services/services.component';
 import { FormsModule } from '@angular/forms';
+import { EcommerceService } from './ecommerce/services/ecommerce-service';
 
 @NgModule({
   declarations: [
@@ -23,9 +24,12 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-	FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    EcommerceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
