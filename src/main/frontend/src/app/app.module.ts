@@ -10,7 +10,13 @@ import { ShoppingCartComponent } from './ecommerce/shopping-cart/shopping-cart.c
 import { ModelsComponent } from './ecommerce/models/models.component';
 import { ServicesComponent } from './ecommerce/services/services.component';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { EcommerceService } from './ecommerce/services/ecommerce-service';
+import { LoginComponent } from './ecommerce/login/login.component';
+import { RegisterComponent } from './ecommerce/register/register.component';
+import { AlertService } from './ecommerce/services/alert-service.service';
+import { UserService } from './ecommerce/services/user-service.service';
+import { AuthenticationService } from './ecommerce/services/authentication-service.service';
 
 @NgModule({
   declarations: [
@@ -20,15 +26,21 @@ import { EcommerceService } from './ecommerce/services/ecommerce-service';
     OrdersComponent,
     ShoppingCartComponent,
     ModelsComponent,
-    ServicesComponent
+    ServicesComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
-    EcommerceService
+    EcommerceService,
+    AlertService,
+    UserService,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })
