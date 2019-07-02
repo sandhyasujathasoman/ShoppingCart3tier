@@ -1,4 +1,26 @@
-<h2>Login</h2>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">ShoppingCart</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                    aria-expanded="false" aria-label="Toggle navigation" (click)="toggleCollapsed()">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="input-group add-on">
+                <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
+                <!----<input id="typeahead-focus"  type="text"  class="form-control"  [(ngModel)]="model"  [ngbTypeahead]="search"  (focus)="focus$.next($event.target.value)"  (click)="click$.next($event.target.value)"  #instance="ngbTypeahead"/>-->
+            </div>
+            <div id="navbarResponsive" [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#" (click)="reset()">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 <form class="container" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="username">Username</label>

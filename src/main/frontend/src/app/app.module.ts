@@ -17,6 +17,9 @@ import { RegisterComponent } from './ecommerce/register/register.component';
 import { AlertService } from './ecommerce/services/alert-service.service';
 import { UserService } from './ecommerce/services/user-service.service';
 import { AuthenticationService } from './ecommerce/services/authentication-service.service';
+import { ModuleWithProviders }  from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { appRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { AuthenticationService } from './ecommerce/services/authentication-servi
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    appRoutingModule
   ],
   providers: [
     EcommerceService,

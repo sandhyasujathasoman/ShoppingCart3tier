@@ -2,9 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ProductsComponent} from "./products/products.component";
 import {ShoppingCartComponent} from "./shopping-cart/shopping-cart.component";
 import {OrdersComponent} from "./orders/orders.component";
-import {LoginComponent} from "./login/login.component";
-import {RegisterComponent} from "./register/register.component"
-
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
     selector: 'app-ecommerce',
     templateUrl: './ecommerce.component.html',
@@ -23,14 +21,10 @@ export class EcommerceComponent implements OnInit {
     @ViewChild('ordersC')
     ordersC: OrdersComponent;
 
-    @ViewChild('loginC')
-    loginC: LoginComponent;
-
-    @ViewChild('registerC')
-    registerC: RegisterComponent;
-
-
-    constructor() {
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router
+    ) {
     }
 
     ngOnInit() {
@@ -43,12 +37,13 @@ export class EcommerceComponent implements OnInit {
     finishOrder(orderFinished: boolean) {
         this.orderFinished = orderFinished;
     }
-
+    loginFunction() {
+        this
+    }
     reset() {
         this.orderFinished = false;
         this.productsC.reset();
         this.shoppingCartC.reset();
         this.ordersC.paid = false;
     }
-    
 }
