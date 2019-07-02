@@ -12,7 +12,8 @@ export class LoginComponent implements OnInit {
     loading = false;
     submitted = false;
     returnUrl: string;
-
+    public collapsed = true;
+    
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
@@ -35,7 +36,9 @@ export class LoginComponent implements OnInit {
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
-
+    toggleCollapsed(): void {
+        this.collapsed = !this.collapsed;
+    }
     // convenience getter for easy access to form fields
     get f() { return this.loginForm.controls; }
 

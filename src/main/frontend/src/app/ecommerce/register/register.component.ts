@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
@@ -6,13 +6,25 @@ import { first } from 'rxjs/operators';
 import { AlertService } from '../services/alert-service.service';
 import { UserService } from '../services/user-service.service';
 import { AuthenticationService } from '../services/authentication-service.service';
-
+import {ProductsComponent} from "../products/products.component";
+import {ShoppingCartComponent} from "../shopping-cart/shopping-cart.component";
+import {OrdersComponent} from "../orders/orders.component";
 
 @Component({ templateUrl: 'register.component.html' })
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
     submitted = false;
+    public collapsed = true;
+
+    @ViewChild('productsC')
+    productsC: ProductsComponent;
+
+    @ViewChild('shoppingCartC')
+    shoppingCartC: ShoppingCartComponent;
+
+    @ViewChild('ordersC')
+    ordersC: OrdersComponent;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -35,7 +47,9 @@ export class RegisterComponent implements OnInit {
             password: ['', [Validators.required, Validators.minLength(6)]]
         });
     }
-
+    toggleCollapsed(): void {
+        this.collapsed = !this.collapsed;
+    }
     // convenience getter for easy access to form fields
     get f() { return this.registerForm.controls; }
 
@@ -62,5 +76,11 @@ export class RegisterComponent implements OnInit {
                     this.alertService.error(error);
                     this.loading = false;
                 });
+    }
+    reset() {
+        this.orderFinished = false;
+        this.productsC.reset();
+        this.shoppingCartC.reset();
+        this.ordersC.paid = false;
     }
 }
