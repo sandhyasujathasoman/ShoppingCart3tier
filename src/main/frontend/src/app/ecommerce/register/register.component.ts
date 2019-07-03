@@ -16,7 +16,8 @@ export class RegisterComponent implements OnInit {
     loading = false;
     submitted = false;
     public collapsed = true;
-
+    orderFinished = false;
+    
     @ViewChild('productsC')
     productsC: ProductsComponent;
 
@@ -49,6 +50,9 @@ export class RegisterComponent implements OnInit {
     }
     toggleCollapsed(): void {
         this.collapsed = !this.collapsed;
+    }
+    finishOrder(orderFinished: boolean) {
+        this.orderFinished = orderFinished;
     }
     // convenience getter for easy access to form fields
     get f() { return this.registerForm.controls; }

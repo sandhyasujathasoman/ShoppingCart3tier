@@ -12,7 +12,13 @@ import {Product} from "../models/product";
 })
 export class ProductsComponent implements OnInit {
     productOrders: ProductOrder[] = [];
-    products: Product[] = [];
+    private _products: Product[] = [];
+    public get products(): Product[] {
+        return this._products;
+    }
+    public set products(value: Product[]) {
+        this._products = value;
+    }
     selectedProductOrder: ProductOrder;
     private shoppingCartOrders: ProductOrders;
     sub: Subscription;

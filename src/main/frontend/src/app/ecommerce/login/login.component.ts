@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewChild} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AlertService } from '../services/alert-service.service';
 import { AuthenticationService } from '../services/authentication-service.service';
+import {ProductsComponent} from "../products/products.component";
+import {ShoppingCartComponent} from "../shopping-cart/shopping-cart.component";
+import {OrdersComponent} from "../orders/orders.component";
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
@@ -13,7 +16,17 @@ export class LoginComponent implements OnInit {
     submitted = false;
     returnUrl: string;
     public collapsed = true;
-    
+    orderFinished = false;
+
+    @ViewChild('productsC')
+    productsC: ProductsComponent;
+
+    @ViewChild('shoppingCartC')
+    shoppingCartC: ShoppingCartComponent;
+
+    @ViewChild('ordersC')
+    ordersC: OrdersComponent;
+
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
@@ -64,5 +77,11 @@ export class LoginComponent implements OnInit {
                     this.alertService.error(error);
                     this.loading = false;
                 });
+    }
+    reset() {
+        this.orderFinished = false;
+        this.productsC.reset();
+        this.shoppingCartC.reset();
+        this.ordersC.paid = false;
     }
 }

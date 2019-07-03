@@ -20,6 +20,8 @@ import { AuthenticationService } from './ecommerce/services/authentication-servi
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { appRoutingModule } from './app-routing.module';
+import { FilterPipeModule } from 'ngx-filter-pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -31,14 +33,16 @@ import { appRoutingModule } from './app-routing.module';
     ModelsComponent,
     ServicesComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent 
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    appRoutingModule
+    appRoutingModule,
+    FilterPipeModule,
+    Ng2SearchPipeModule
   ],
   providers: [
     EcommerceService,
