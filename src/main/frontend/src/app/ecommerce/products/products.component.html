@@ -1,24 +1,26 @@
 <div class="container">
 <div class="card-deck ml-auto">
-    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let order of productOrders">
+    <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch" *ngFor="let order of productOrders">
         <div class="card text-center">
             <div class="card-header">
                 <h4>{{order.product.name}}</h4>
             </div>
-            <div class="card-body">
+            <div class="card-body mt-auto">
                 <a href="#"><img class="card-img-top" src={{order.product.pictureUrl}} alt="Card image cap"></a>
                 <h5 class="card-title">${{order.product.price}}</h5>
+            </div>
+            <div class="card-footer">
                 <div class="row">
-                    <div class="col-4 padding-0" *ngIf="!isProductSelected(order.product)">
+                    <div class="col-4 padding-0 " *ngIf="!isProductSelected(order.product)">
                         <input type="number" min="0" class="form-control" [(ngModel)]=order.quantity>
                     </div>
                     <div class="col-4 padding-0" *ngIf="!isProductSelected(order.product)">
-                        <button class="btn btn-primary" (click)="addToCart(order)"
+                        <button class="btn btn-primary align-self-end" (click)="addToCart(order)"
                                 [disabled]="order.quantity <= 0">Add To Cart
                         </button>
                     </div>
                     <div class="col-12" *ngIf="isProductSelected(order.product)">
-                        <button class="btn btn-primary btn-block"
+                        <button class="btn btn-primary btn-block align-self-end"
                                 (click)="removeFromCart(order)">Remove From Cart
                         </button>
                     </div>
