@@ -20,7 +20,7 @@ export class AuthenticationService {
     }
 
     login(username, password) {
-        return this.http.post<any>(`http://localhost:8080/users/authenticate`, { username, password })
+        return this.http.post<any>(`http://myspringapp-springbootdemoapps.apps.cdeocp.com/users/authenticate`, { username, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));

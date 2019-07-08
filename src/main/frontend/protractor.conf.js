@@ -12,7 +12,7 @@ exports.config = {
     'browserName': 'chrome'
   },
   directConnect: true,
-  baseUrl: 'http://localhost:8080/',
+  baseUrl: 'http://myspringapp-springbootdemoapps.apps.cdeocp.com/',
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,

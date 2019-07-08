@@ -8,14 +8,14 @@ export class UserService {
     constructor(private http: HttpClient) { }
 
     getAll() {
-        return this.http.get<User[]>(`http://localhost:8080/users`);
+        return this.http.get<User[]>(`http://myspringapp-springbootdemoapps.apps.cdeocp.com/users`);
     }
 
     register(user: User) {
-        return this.http.post(`http://localhost:8080/users/register`, user);
+        return this.http.post(`http://myspringapp-springbootdemoapps.apps.cdeocp.com/users/register`, user);
     }
 
     delete(id: number) {
-        return this.http.delete(`http://localhost:8080/users/${id}`);
+        return this.http.delete(`http://myspringapp-springbootdemoapps.apps.cdeocp.com/users/${id}`);
     }
 }
