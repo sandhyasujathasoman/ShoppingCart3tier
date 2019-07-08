@@ -6,8 +6,8 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class EcommerceService {
-    private productsUrl = "http://localhost:8080/api/products";
-    private ordersUrl = "/api/orders";
+    private productsUrl = "http://myspringapp-springbootdemoapps.apps.cdeocp.com/api/products";
+    private ordersUrl = "http://myspringapp-springbootdemoapps.apps.cdeocp.com/api/orders";
 
     private productOrder: ProductOrder;
     private orders: ProductOrders = new ProductOrders();
