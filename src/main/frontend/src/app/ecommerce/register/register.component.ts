@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
     submitted = false;
     public collapsed = true;
     orderFinished = false;
-    
+
     @ViewChild('productsC')
     productsC: ProductsComponent;
 
@@ -81,10 +81,5 @@ export class RegisterComponent implements OnInit {
                     this.loading = false;
                 });
     }
-    reset() {
-        this.orderFinished = false;
-        this.productsC.reset();
-        this.shoppingCartC.reset();
-        this.ordersC.paid = false;
-    }
+
 }

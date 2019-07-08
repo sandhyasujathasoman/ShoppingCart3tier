@@ -78,10 +78,4 @@ export class LoginComponent implements OnInit {
                     this.loading = false;
                 });
     }
-    reset() {
-        this.orderFinished = false;
-        this.productsC.reset();
-        this.shoppingCartC.reset();
-        this.ordersC.paid = false;
-    }
 }

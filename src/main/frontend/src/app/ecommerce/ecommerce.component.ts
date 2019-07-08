@@ -53,8 +53,8 @@ return items.filter( it => {
     }
     reset() {
         this.orderFinished = false;
-        this.productsC.reset();
-        this.shoppingCartC.reset();
+      //  this.productsC.reset();
+       // this.shoppingCartC.reset();
         this.ordersC.paid = false;
     }
     
