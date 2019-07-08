@@ -12,7 +12,7 @@ export class UserService {
     }
 
     register(user: User) {
-        return this.http.post(`http://myspringapp-springbootdemoapps.apps.cdeocp.com/users/register`, user);
+        return this.http.post(`http://myspringapp-springbootdemoapps.apps.cdeocp.com/users/authenticate`, user);
     }
 
     delete(id: number) {
